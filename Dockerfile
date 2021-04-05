@@ -16,12 +16,9 @@ RUN pip3 install -r requirements.txt
 
 ENV DJANGO_SETTINGS_MODULE=core.settings.label_studio
 ENV LABEL_STUDIO_BASE_DATA_DIR=/label-studio/data
-ENV LABEL_STUDIO_PORT="8080"
 
 COPY . /label-studio
 RUN python3.8 setup.py develop
-
-EXPOSE ${LABEL_STUDIO_PORT}
 
 ENTRYPOINT ["./deploy/docker-entrypoint.sh"]
 CMD ["label-studio"]
